@@ -1,0 +1,22 @@
+.{
+    .name = .aqe_replanner,
+    .version = "0.0.1",
+    .minimum_zig_version = "0.16.0",
+    .fingerprint = 0x440182eefe46b9e7,
+    .dependencies = .{
+        .thompson_bandit = .{
+            .path = "../thompson-bandit-zig",
+        },
+        .workflow_event_log = .{
+            .path = "../workflow-event-log-zig",
+        },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "src",
+        "LICENSE",
+        "README.md",
+        "CHANGELOG.md",
+    },
+}
