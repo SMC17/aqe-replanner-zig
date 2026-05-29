@@ -43,6 +43,12 @@ pub const CostAwareReplayReplanner = cost_replay.CostAwareReplayReplanner;
 pub const encodeCostDecisionPayload = cost_replay.encodeCostDecisionPayload;
 pub const cost_payload_len = cost_replay.cost_payload_len;
 
+pub const cost_gated_rules = @import("cost_gated_rules.zig");
+pub const CostGatedRuleEngine = cost_gated_rules.CostGatedRuleEngine;
+pub const applyGated = cost_gated_rules.applyGated;
+pub const estimateNodeCost = cost_gated_rules.estimateNodeCost;
+pub const Verdict = cost_gated_rules.Verdict;
+
 test {
     @import("std").testing.refAllDecls(@This());
 }

@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.0.6 — 2026-05-28
+
+Adds src/cost_gated_rules.zig. Wraps a rule application with two
+gates: BEFORE and AFTER estimateNodeCost, fire iff AFTER drops below
+BEFORE * threshold OR a per-rule ArmPosterior Thompson-samples in
+favour of firing. Reinforce success when after < before; failure
+otherwise. Rollback on block. CostGatedRuleEngine wires the gate
+around a list of rules and runs to fixed point or max_iterations.
+
+Convergence test: bandit recovers a useful rule after 30 trials and
+posterior mean climbs above 0.5.
+
+52 to 57 tests pass on Zig 0.16.
+
 ## 0.0.5 — 2026-05-28
 
 Adds src/cost_replay.zig with CostAwareReplayReplanner. Walks the
