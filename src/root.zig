@@ -104,6 +104,9 @@ pub const intersectInPlace = null_bits.intersectInPlace;
 pub const validityRequiredBytes = null_bits.requiredBytes;
 pub const fromBooleans = null_bits.fromBooleans;
 
+pub const vectorised_validity = @import("vectorised_validity.zig");
+pub const ValidityBatch = vectorised_validity.ValidityBatch;
+
 test {
     @import("std").testing.refAllDecls(@This());
 }
