@@ -117,6 +117,9 @@ pub const stringEqualsInline = string_view.equalsInline;
 pub const dict_column = @import("dict_column.zig");
 pub const DictColumnI64 = dict_column.DictColumnI64;
 
+pub const dict_column_sv = @import("dict_column_sv.zig");
+pub const DictColumnStringView = dict_column_sv.DictColumnStringView;
+
 test {
     @import("std").testing.refAllDecls(@This());
 }
