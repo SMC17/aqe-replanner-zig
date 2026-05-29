@@ -82,6 +82,13 @@ pub const selinger_dp = @import("selinger_dp.zig");
 pub const buildSelingerOrder = selinger_dp.buildSelingerOrder;
 pub const SelingerDpResult = selinger_dp.DpResult;
 
+pub const vectorised = @import("vectorised.zig");
+pub const Batch = vectorised.Batch;
+pub const Column = vectorised.Column;
+pub const VectorisedRule = vectorised.VectorisedRule;
+pub const applyVectorised = vectorised.applyVectorised;
+pub const applyVectorisedGated = vectorised.applyVectorisedGated;
+
 test {
     @import("std").testing.refAllDecls(@This());
 }
