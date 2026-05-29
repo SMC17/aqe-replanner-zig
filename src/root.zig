@@ -89,6 +89,12 @@ pub const VectorisedRule = vectorised.VectorisedRule;
 pub const applyVectorised = vectorised.applyVectorised;
 pub const applyVectorisedGated = vectorised.applyVectorisedGated;
 
+pub const null_mask = @import("null_mask.zig");
+pub const NullMask = null_mask.NullMask;
+pub const intersectNotNull = null_mask.intersectNotNull;
+pub const predicateWithNullAware = null_mask.predicateWithNullAware;
+pub const countNonNull = null_mask.countNonNull;
+
 test {
     @import("std").testing.refAllDecls(@This());
 }
