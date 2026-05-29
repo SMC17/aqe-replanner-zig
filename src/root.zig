@@ -120,6 +120,10 @@ pub const DictColumnI64 = dict_column.DictColumnI64;
 pub const dict_column_sv = @import("dict_column_sv.zig");
 pub const DictColumnStringView = dict_column_sv.DictColumnStringView;
 
+pub const rle_column = @import("rle_column.zig");
+pub const RleColumnI64 = rle_column.RleColumnI64;
+pub const RleRun = rle_column.Run;
+
 test {
     @import("std").testing.refAllDecls(@This());
 }
