@@ -49,6 +49,13 @@ pub const applyGated = cost_gated_rules.applyGated;
 pub const estimateNodeCost = cost_gated_rules.estimateNodeCost;
 pub const Verdict = cost_gated_rules.Verdict;
 
+pub const optimizer_rule = @import("optimizer_rule.zig");
+pub const OptimizerRule = optimizer_rule.OptimizerRule;
+pub const OptimizerEngine = optimizer_rule.OptimizerEngine;
+
+pub const rule_library = @import("rule_library.zig");
+pub const RuleLibrary = rule_library.Library;
+
 test {
     @import("std").testing.refAllDecls(@This());
 }
