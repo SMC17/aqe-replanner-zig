@@ -107,6 +107,13 @@ pub const fromBooleans = null_bits.fromBooleans;
 pub const vectorised_validity = @import("vectorised_validity.zig");
 pub const ValidityBatch = vectorised_validity.ValidityBatch;
 
+pub const string_view = @import("string_view.zig");
+pub const StringView = string_view.StringView;
+pub const buildInlineStringView = string_view.buildInline;
+pub const buildExternalStringView = string_view.buildExternal;
+pub const stringPrefixEquals = string_view.prefixEquals;
+pub const stringEqualsInline = string_view.equalsInline;
+
 test {
     @import("std").testing.refAllDecls(@This());
 }
