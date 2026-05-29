@@ -124,6 +124,12 @@ pub const rle_column = @import("rle_column.zig");
 pub const RleColumnI64 = rle_column.RleColumnI64;
 pub const RleRun = rle_column.Run;
 
+pub const dremel_tree = @import("dremel_tree.zig");
+pub const PartialAgg = dremel_tree.PartialAgg;
+pub const leafAggregate = dremel_tree.leafAggregate;
+pub const dremelMix = dremel_tree.mix;
+pub const dremelRoot = dremel_tree.root;
+
 test {
     @import("std").testing.refAllDecls(@This());
 }
