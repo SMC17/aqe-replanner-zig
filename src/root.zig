@@ -71,6 +71,13 @@ pub const applyPatternGated = pattern_cost_gated.applyPatternGated;
 pub const applyRecursiveGated = pattern_cost_gated.applyRecursiveGated;
 pub const recordPatternOutcome = pattern_cost_gated.recordOutcome;
 
+pub const join_reorder = @import("join_reorder.zig");
+pub const Relation = join_reorder.Relation;
+pub const JoinOrder = join_reorder.JoinOrder;
+pub const pickLowestCostOrder = join_reorder.pickLowestCostOrder;
+pub const banditPickOrder = join_reorder.banditPickOrder;
+pub const OrderPosteriors = join_reorder.OrderPosteriors;
+
 test {
     @import("std").testing.refAllDecls(@This());
 }
