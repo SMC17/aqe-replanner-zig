@@ -66,6 +66,11 @@ pub const applyRecursive = pattern_recursive.applyRecursive;
 pub const applyRecursiveAll = pattern_recursive.applyRecursiveAll;
 pub const RecursiveResult = pattern_recursive.RecursiveResult;
 
+pub const pattern_cost_gated = @import("pattern_cost_gated.zig");
+pub const applyPatternGated = pattern_cost_gated.applyPatternGated;
+pub const applyRecursiveGated = pattern_cost_gated.applyRecursiveGated;
+pub const recordPatternOutcome = pattern_cost_gated.recordOutcome;
+
 test {
     @import("std").testing.refAllDecls(@This());
 }
