@@ -61,6 +61,11 @@ pub const PlanPattern = pattern_match.PlanPattern;
 pub const PatternRule = pattern_match.PatternRule;
 pub const Match = pattern_match.Match;
 
+pub const pattern_recursive = @import("pattern_recursive.zig");
+pub const applyRecursive = pattern_recursive.applyRecursive;
+pub const applyRecursiveAll = pattern_recursive.applyRecursiveAll;
+pub const RecursiveResult = pattern_recursive.RecursiveResult;
+
 test {
     @import("std").testing.refAllDecls(@This());
 }
