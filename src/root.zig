@@ -114,6 +114,9 @@ pub const buildExternalStringView = string_view.buildExternal;
 pub const stringPrefixEquals = string_view.prefixEquals;
 pub const stringEqualsInline = string_view.equalsInline;
 
+pub const dict_column = @import("dict_column.zig");
+pub const DictColumnI64 = dict_column.DictColumnI64;
+
 test {
     @import("std").testing.refAllDecls(@This());
 }
