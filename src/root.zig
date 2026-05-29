@@ -38,6 +38,11 @@ pub const costEstimate = cost_model.estimate;
 pub const pickByCostThompson = cost_model.pickByCostThompson;
 pub const recordObservedCost = cost_model.recordObservedCost;
 
+pub const cost_replay = @import("cost_replay.zig");
+pub const CostAwareReplayReplanner = cost_replay.CostAwareReplayReplanner;
+pub const encodeCostDecisionPayload = cost_replay.encodeCostDecisionPayload;
+pub const cost_payload_len = cost_replay.cost_payload_len;
+
 test {
     @import("std").testing.refAllDecls(@This());
 }

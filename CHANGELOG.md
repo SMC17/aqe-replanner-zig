@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.0.5 — 2026-05-28
+
+Adds src/cost_replay.zig with CostAwareReplayReplanner. Walks the
+workflow event log, ingests both v0.0.4 (16-byte) and v0.0.5 (24-byte)
+decision payloads. The 24-byte payload carries observed_cost as f64
+bits in bytes 16..24. loadFromLog builds the site to RecordedEntry
+map AND seeds the bandit posteriors from history (success when
+observed below target).
+
+pickWithReplay returns the recorded variant if a matching candidate
+exists AND its observed cost is within tolerance_ratio of the fresh
+cost estimate; else falls through to pickByCostThompson. Tolerance
+detects cost drift: if cardinality changed 10x since recording, the
+recorded choice is stale and the bandit re-samples.
+
+47 to 52 tests pass on Zig 0.16.
+
 ## 0.0.4 — 2026-05-28
 
 Adds src/cost_model.zig with three pieces. estimate(plan, cardinalities,
