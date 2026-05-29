@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.0.3 — 2026-05-28
+
+Adds arrangement.zig + delta_join.zig + rule.zig substrates.
+
+ArrangementCache caches per-(table, sorted key_columns) Arrangement
+with ref_count and miss/hit telemetry. Normalises unsorted key column
+lists before hashing so callers do not have to. Get-or-create returns
+existing on hit; allocates on miss.
+
+delta_join.plan(inputs) picks between hash-join and delta-join: each
+plan reports the number of NEW arrangements it must materialise; the
+substrate selects the plan with the lower count, ties going to delta-
+join (cache-coherent and lower memory).
+
+RuleEngine runs pattern-match transformation rules over a PlanNode
+AST until a fixed point is reached or max_iterations trips. Demo rules
+ship: dropEmptyFilter, foldDoubleProjection, pushProjectionThrough-
+Filter (stub).
+
+20 to 38 tests pass on Zig 0.16.
+
 ## 0.0.2 — 2026-05-28
 
 Adds Disjoint LinUCB (Li et al. 2010) for contextual-bandit decisions

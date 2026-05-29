@@ -15,6 +15,21 @@ pub const linucb_max_dim = linucb.max_dim;
 pub const replay_replanner = @import("replay_replanner.zig");
 pub const ReplayReplanner = replay_replanner.ReplayReplanner;
 
+pub const arrangement = @import("arrangement.zig");
+pub const ArrangementCache = arrangement.ArrangementCache;
+pub const Arrangement = arrangement.Arrangement;
+
+pub const delta_join = @import("delta_join.zig");
+pub const JoinInput = delta_join.JoinInput;
+pub const JoinPlan = delta_join.JoinPlan;
+pub const PlanKind = delta_join.PlanKind;
+pub const planJoin = delta_join.plan;
+
+pub const rule = @import("rule.zig");
+pub const RuleEngine = rule.RuleEngine;
+pub const Rule = rule.Rule;
+pub const PlanNode = rule.PlanNode;
+
 test {
     @import("std").testing.refAllDecls(@This());
 }
