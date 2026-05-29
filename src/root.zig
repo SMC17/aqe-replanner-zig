@@ -30,6 +30,14 @@ pub const RuleEngine = rule.RuleEngine;
 pub const Rule = rule.Rule;
 pub const PlanNode = rule.PlanNode;
 
+pub const cost_model = @import("cost_model.zig");
+pub const CostWeights = cost_model.CostWeights;
+pub const CostEstimate = cost_model.CostEstimate;
+pub const PlanSignature = cost_model.PlanSignature;
+pub const costEstimate = cost_model.estimate;
+pub const pickByCostThompson = cost_model.pickByCostThompson;
+pub const recordObservedCost = cost_model.recordObservedCost;
+
 test {
     @import("std").testing.refAllDecls(@This());
 }

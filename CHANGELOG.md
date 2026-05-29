@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.0.4 — 2026-05-28
+
+Adds src/cost_model.zig with three pieces. estimate(plan, cardinalities,
+weights, hit_rate) returns CostEstimate = build_cost * new_arrangements
+* (1 - hit_rate) + scan_cost * total_card + shuffle_cost. The
+arrangement-cache hit_rate dampens build cost for plans that can reuse
+existing arrangements; warm-cache delta-join becomes free at the
+build-cost component. pickByCostThompson samples each plan's
+ArmPosterior and weights by 1/cost; lower cost wins more often.
+recordObservedCost updates the posterior using a target_cost
+threshold: below target = success, above target = failure.
+
+Convergence test: with 50 simulated trials of (cheap_cost=200,
+expensive_cost=5000) at target=1000, the bandit picks the cheap plan
+at >= 85 percent of 200 follow-up draws.
+
+38 to 47 tests pass on Zig 0.16.
+
 ## 0.0.3 — 2026-05-28
 
 Adds arrangement.zig + delta_join.zig + rule.zig substrates.
