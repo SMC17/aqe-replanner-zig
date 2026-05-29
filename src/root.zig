@@ -95,6 +95,15 @@ pub const intersectNotNull = null_mask.intersectNotNull;
 pub const predicateWithNullAware = null_mask.predicateWithNullAware;
 pub const countNonNull = null_mask.countNonNull;
 
+pub const null_bits = @import("null_bits.zig");
+pub const isValid = null_bits.isValid;
+pub const setValid = null_bits.setValid;
+pub const setNull = null_bits.setNull;
+pub const countValid = null_bits.countValid;
+pub const intersectInPlace = null_bits.intersectInPlace;
+pub const validityRequiredBytes = null_bits.requiredBytes;
+pub const fromBooleans = null_bits.fromBooleans;
+
 test {
     @import("std").testing.refAllDecls(@This());
 }
