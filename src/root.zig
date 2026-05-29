@@ -130,6 +130,12 @@ pub const leafAggregate = dremel_tree.leafAggregate;
 pub const dremelMix = dremel_tree.mix;
 pub const dremelRoot = dremel_tree.root;
 
+pub const encoding_ladder = @import("encoding_ladder.zig");
+pub const Encoding = encoding_ladder.Encoding;
+pub const EncodingStats = encoding_ladder.ColumnStats;
+pub const pickEncoding = encoding_ladder.pickEncoding;
+pub const estimateEncodingBytes = encoding_ladder.estimateBytes;
+
 test {
     @import("std").testing.refAllDecls(@This());
 }
