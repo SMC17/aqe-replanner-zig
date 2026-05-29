@@ -56,6 +56,11 @@ pub const OptimizerEngine = optimizer_rule.OptimizerEngine;
 pub const rule_library = @import("rule_library.zig");
 pub const RuleLibrary = rule_library.Library;
 
+pub const pattern_match = @import("pattern_match.zig");
+pub const PlanPattern = pattern_match.PlanPattern;
+pub const PatternRule = pattern_match.PatternRule;
+pub const Match = pattern_match.Match;
+
 test {
     @import("std").testing.refAllDecls(@This());
 }
