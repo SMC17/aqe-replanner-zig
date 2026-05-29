@@ -78,6 +78,10 @@ pub const pickLowestCostOrder = join_reorder.pickLowestCostOrder;
 pub const banditPickOrder = join_reorder.banditPickOrder;
 pub const OrderPosteriors = join_reorder.OrderPosteriors;
 
+pub const selinger_dp = @import("selinger_dp.zig");
+pub const buildSelingerOrder = selinger_dp.buildSelingerOrder;
+pub const SelingerDpResult = selinger_dp.DpResult;
+
 test {
     @import("std").testing.refAllDecls(@This());
 }
