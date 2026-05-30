@@ -22,6 +22,10 @@ pub const rule_chain = @import("rule_chain.zig");
 pub const RuleFn = rule_chain.RuleFn;
 pub const applyChain = rule_chain.applyChain;
 
+pub const phase_step = @import("phase_step.zig");
+pub const PhaseStepFn = phase_step.PhaseStepFn;
+pub const PhaseStepExecutor = phase_step.PhaseStepExecutor;
+
 pub const DecisionSiteId = replanner.DecisionSiteId;
 pub const VariantId = replanner.VariantId;
 pub const PlanVariant = replanner.PlanVariant;
