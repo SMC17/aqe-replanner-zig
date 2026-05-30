@@ -26,6 +26,10 @@ pub const phase_step = @import("phase_step.zig");
 pub const PhaseStepFn = phase_step.PhaseStepFn;
 pub const PhaseStepExecutor = phase_step.PhaseStepExecutor;
 
+pub const customer_pipeline = @import("customer_pipeline.zig");
+pub const AdapterFn = customer_pipeline.AdapterFn;
+pub const CustomerPipeline = customer_pipeline.CustomerPipeline;
+
 pub const DecisionSiteId = replanner.DecisionSiteId;
 pub const VariantId = replanner.VariantId;
 pub const PlanVariant = replanner.PlanVariant;
