@@ -1,4 +1,4 @@
-//! pattern_recursive — v0.0.9 recursive subtree pattern matching.
+//! pattern_recursive: v0.0.9 recursive subtree pattern matching.
 //!
 //! v0.0.8 ships `PatternRule.applyOnce` which tests the pattern
 //! against the root `PlanNode`. Real DataFusion + Catalyst rules
@@ -131,7 +131,7 @@ test "applyRecursive does not fire when no subtree matches" {
     try testing.expectEqual(@as(usize, 0), res.fired_count);
 }
 
-test "applyRecursive walks bottom-up — child filter drops before parent sees it" {
+test "applyRecursive walks bottom-up so child filter drops before parent sees it" {
     // Tree: filter(filter(scan)). Bottom-up: inner filter drops
     // first (child becomes scan), then outer filter sees its child
     // is a scan and drops too.
@@ -170,4 +170,49 @@ test "applyRecursive on deep nested filters drops all of them" {
     const res = applyRecursive(rule, testing.allocator, &f3);
     try testing.expectEqual(@as(usize, 3), res.fired_count);
     try testing.expect(f3 == .scan);
+}
+
+// Allocation budget for the applyRecursive walk under a never-firing
+// rule. Demonstrates the substrate testing itself against the
+// Landseed zero-alloc hot-path shape (S-L83-6 shipped in
+// thompson-bandit v0.0.4). The walk descends the tree and invokes
+// applyOnce at each subtree; for a rule whose pattern does not
+// match any node, applyOnce never calls its build callback, so the
+// recursion machinery itself must be allocation-free.
+const tb = @import("thompson_bandit");
+
+const NoFireCtx = struct {
+    rule: PatternRule,
+    node: *PlanNode,
+};
+
+fn applyRecursiveBody(ctx: NoFireCtx, alloc: std.mem.Allocator) void {
+    _ = applyRecursive(ctx.rule, alloc, ctx.node);
+}
+
+fn neverMatchBuild(allocator: std.mem.Allocator, m: pattern_match.Match) ?PlanNode {
+    _ = allocator;
+    _ = m;
+    return null;
+}
+
+test "applyRecursive on a never-firing rule is allocation-free" {
+    var scan: PlanNode = .{ .scan = .{ .table = 1, .projected = &[_]u32{1} } };
+    var f1: PlanNode = .{ .filter = .{ .input = &scan, .predicate = 1 } };
+    var prj: PlanNode = .{ .project = .{ .input = &f1, .columns = &[_]u32{1} } };
+
+    // A pattern that asks for an unknown table id. applyOnce will
+    // refuse to match every node in the tree, so no build call lands.
+    const never_pat: PlanPattern = .{ .kind = .scan, .scan_table = 0xDEAD_BEEF };
+    const rule: PatternRule = .{
+        .name = "never-fire",
+        .pattern = never_pat,
+        .build = neverMatchBuild,
+    };
+    try tb.expectNoAllocations(
+        testing.allocator,
+        NoFireCtx,
+        .{ .rule = rule, .node = &prj },
+        applyRecursiveBody,
+    );
 }
