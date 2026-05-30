@@ -7,6 +7,13 @@ pub const selectCheapestFittingTopology = topology_selector.selectCheapestFittin
 pub const anyTopologyFits = topology_selector.anyFits;
 pub const cheapestFittingTopologyCost = topology_selector.cheapestFittingCost;
 
+pub const predicate_combinators = @import("predicate_combinators.zig");
+pub const andPred = predicate_combinators.andP;
+pub const orPred = predicate_combinators.orP;
+pub const notPred = predicate_combinators.notP;
+pub const alwaysTrue = predicate_combinators.alwaysTrue;
+pub const alwaysFalse = predicate_combinators.alwaysFalse;
+
 pub const DecisionSiteId = replanner.DecisionSiteId;
 pub const VariantId = replanner.VariantId;
 pub const PlanVariant = replanner.PlanVariant;
