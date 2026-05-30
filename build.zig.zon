@@ -1,6 +1,6 @@
 .{
     .name = .aqe_replanner,
-    .version = "0.0.25",
+    .version = "0.0.26",
     .minimum_zig_version = "0.16.0",
     .fingerprint = 0x440182eefe46b9e7,
     .dependencies = .{

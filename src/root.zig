@@ -18,6 +18,10 @@ pub const cost_aggregator = @import("cost_aggregator.zig");
 pub const CostSample = cost_aggregator.CostSample;
 pub const CostAccumulator = cost_aggregator.CostAccumulator;
 
+pub const rule_chain = @import("rule_chain.zig");
+pub const RuleFn = rule_chain.RuleFn;
+pub const applyChain = rule_chain.applyChain;
+
 pub const DecisionSiteId = replanner.DecisionSiteId;
 pub const VariantId = replanner.VariantId;
 pub const PlanVariant = replanner.PlanVariant;
