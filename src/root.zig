@@ -1,5 +1,12 @@
 const replanner = @import("replanner.zig");
 
+pub const topology_selector = @import("topology_selector.zig");
+pub const Topology = topology_selector.Topology;
+pub const TopologyId = topology_selector.TopologyId;
+pub const selectCheapestFittingTopology = topology_selector.selectCheapestFitting;
+pub const anyTopologyFits = topology_selector.anyFits;
+pub const cheapestFittingTopologyCost = topology_selector.cheapestFittingCost;
+
 pub const DecisionSiteId = replanner.DecisionSiteId;
 pub const VariantId = replanner.VariantId;
 pub const PlanVariant = replanner.PlanVariant;
