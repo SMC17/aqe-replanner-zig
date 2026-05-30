@@ -14,6 +14,10 @@ pub const notPred = predicate_combinators.notP;
 pub const alwaysTrue = predicate_combinators.alwaysTrue;
 pub const alwaysFalse = predicate_combinators.alwaysFalse;
 
+pub const cost_aggregator = @import("cost_aggregator.zig");
+pub const CostSample = cost_aggregator.CostSample;
+pub const CostAccumulator = cost_aggregator.CostAccumulator;
+
 pub const DecisionSiteId = replanner.DecisionSiteId;
 pub const VariantId = replanner.VariantId;
 pub const PlanVariant = replanner.PlanVariant;
