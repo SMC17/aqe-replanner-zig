@@ -117,7 +117,7 @@ test "applyCostedChain on empty rule set returns 0 and no cost" {
     var p: TestPlan = .{ .value = 5 };
     var acc: CostAccumulator = .init();
     const rules: []const CostedRuleFn(TestPlan) = &.{};
-    const iters = applyCostedChain(TestPlan, &p, &rules, &acc, 100);
+    const iters = applyCostedChain(TestPlan, &p, rules, &acc, 100);
     try testing.expectEqual(@as(usize, 0), iters);
     try testing.expectEqual(@as(f64, 0.0), acc.running_cost);
 }
