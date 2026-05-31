@@ -30,6 +30,10 @@ pub const customer_pipeline = @import("customer_pipeline.zig");
 pub const AdapterFn = customer_pipeline.AdapterFn;
 pub const CustomerPipeline = customer_pipeline.CustomerPipeline;
 
+pub const costed_rule_chain = @import("costed_rule_chain.zig");
+pub const CostedRuleFn = costed_rule_chain.CostedRuleFn;
+pub const applyCostedChain = costed_rule_chain.applyCostedChain;
+
 pub const DecisionSiteId = replanner.DecisionSiteId;
 pub const VariantId = replanner.VariantId;
 pub const PlanVariant = replanner.PlanVariant;
